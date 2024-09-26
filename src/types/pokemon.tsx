@@ -3,6 +3,7 @@ export interface SinglePokemon {
     number: string;
     types: string[];
     image: string;
+    __typename: string;
 }
 
 

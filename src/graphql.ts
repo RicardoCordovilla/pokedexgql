@@ -114,12 +114,20 @@ export type QueryPokemonsArgs = {
 export type AllPokemosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllPokemosQuery = { __typename?: 'Query', pokemons?: Array<{ __typename?: 'Pokemon', name?: string | null, number?: string | null, types?: Array<string | null> | null, image?: string | null } | null> | null };
+export type AllPokemosQuery = { __typename?: 'Query', pokemons?: Array<{ __typename?: 'Pokemon', id: string, name?: string | null, number?: string | null, types?: Array<string | null> | null, image?: string | null } | null> | null };
+
+export type GetPokemonQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type GetPokemonQuery = { __typename?: 'Query', pokemon?: { __typename?: 'Pokemon', id: string, name?: string | null, number?: string | null, types?: Array<string | null> | null, image?: string | null, height?: { __typename?: 'PokemonDimension', minimum?: string | null, maximum?: string | null } | null, weight?: { __typename?: 'PokemonDimension', minimum?: string | null, maximum?: string | null } | null, attacks?: { __typename?: 'PokemonAttack', fast?: Array<{ __typename?: 'Attack', damage?: number | null, name?: string | null } | null> | null } | null } | null };
 
 
 export const AllPokemosDocument = gql`
     query AllPokemos {
   pokemons(first: 100000) {
+    id
     name
     number
     types
@@ -159,3 +167,61 @@ export type AllPokemosQueryHookResult = ReturnType<typeof useAllPokemosQuery>;
 export type AllPokemosLazyQueryHookResult = ReturnType<typeof useAllPokemosLazyQuery>;
 export type AllPokemosSuspenseQueryHookResult = ReturnType<typeof useAllPokemosSuspenseQuery>;
 export type AllPokemosQueryResult = Apollo.QueryResult<AllPokemosQuery, AllPokemosQueryVariables>;
+export const GetPokemonDocument = gql`
+    query GetPokemon($id: String) {
+  pokemon(id: $id) {
+    id
+    name
+    number
+    types
+    image
+    height {
+      minimum
+      maximum
+    }
+    weight {
+      minimum
+      maximum
+    }
+    attacks {
+      fast {
+        damage
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetPokemonQuery__
+ *
+ * To run a query within a React component, call `useGetPokemonQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPokemonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPokemonQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetPokemonQuery(baseOptions?: Apollo.QueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+      }
+export function useGetPokemonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+        }
+export function useGetPokemonSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+        }
+export type GetPokemonQueryHookResult = ReturnType<typeof useGetPokemonQuery>;
+export type GetPokemonLazyQueryHookResult = ReturnType<typeof useGetPokemonLazyQuery>;
+export type GetPokemonSuspenseQueryHookResult = ReturnType<typeof useGetPokemonSuspenseQuery>;
+export type GetPokemonQueryResult = Apollo.QueryResult<GetPokemonQuery, GetPokemonQueryVariables>;

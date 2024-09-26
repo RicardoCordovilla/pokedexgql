@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 
 interface SearcherProps {
     setSearch: (search: string) => void;
+    exclude?: string;
 }
 
 const Searcher: FC<SearcherProps> = ({ setSearch }) => {
@@ -10,7 +11,7 @@ const Searcher: FC<SearcherProps> = ({ setSearch }) => {
     useEffect(() => {
         setTimeout(() => {
             setSearch(searchValue)
-        }, 500)
+        }, 800)
     }, [searchValue, setSearch])
 
     return (

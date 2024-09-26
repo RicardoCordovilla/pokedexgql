@@ -7,12 +7,16 @@ interface PokemonsListProps {
 }
 
 const PokemonsList: FC<PokemonsListProps> = ({ pokemons }) => {
-    const pokemonsList = pokemons?.pokemons
-    if(!pokemons) return <div>Loading...</div>
+    console.log(pokemons)
+    const pokemonsList = pokemons?.pokemons?.filter(
+        (pokemon) => pokemon !== null && pokemon !== undefined
+    )
+    if (!pokemons) return <div>Loading...</div>
     return (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {
-                pokemonsList?.map((pokemon: Pokemon) => (
+                pokemonsList?.map((pokemon: Pokemon) =>
+                (
                     <PokemonSingleCard
                         key={pokemon.id}
                         pokemon={pokemon}
