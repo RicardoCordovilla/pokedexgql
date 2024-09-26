@@ -48,6 +48,10 @@ export default tseslint.config({
   },
 })
 ```
+# Screens
+
+![image](https://github.com/user-attachments/assets/cd854102-611d-4c56-96c7-9a7e076241dc)
+![image](https://github.com/user-attachments/assets/194196bd-1463-4aa2-8fe1-3c575ed06566)
 
 
 # Pokedex GraphQL
