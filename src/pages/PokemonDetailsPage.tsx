@@ -21,7 +21,7 @@ const PokemonDetailsPage = () => {
     setFilterSearched({ pokemons: filtered })
   }, [search, allPokes])
 
-  if (data?.pokemon === null || data?.pokemon === undefined) 
+  if (data?.pokemon === null || data?.pokemon === undefined)
     return <Loader />
 
   if (loading) return <div>Loading...</div>
