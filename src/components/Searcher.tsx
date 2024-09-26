@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from "react";
+import { IoSearch } from "react-icons/io5";
 
 interface SearcherProps {
     setSearch: (search: string) => void;
@@ -19,15 +20,18 @@ const Searcher: FC<SearcherProps> = ({ setSearch }) => {
             className="flex flex-row justify-center items-center gap-4 w-full"
         >
             <input
-                className="border-2 border-gray-300 p-2"
+                className="border-gray-300 p-4 rounded-md input-search size-12"
                 type="text"
-                placeholder="Search"
+                placeholder="search eh. ditto or bulbasaur"
                 value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}/>
+                onChange={(e) => setSearchValue(e.target.value)} />
             <button
+                className="p-3 rounded-md shadow-2xl bg-red-700 border-none text-white hover:bg-red-500  items-center justify-center flex"
                 onClick={() => setSearch(searchValue)}
             >
-                Search
+                <IoSearch 
+                    size={22}
+                />
             </button>
         </div>
     )

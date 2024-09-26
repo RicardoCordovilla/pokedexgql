@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import Searcher from "../components/Searcher"
 import { AllPokemosQuery, useAllPokemosQuery } from "../graphql"
 import PokemonsList from "../components/PokemonsList"
+import Logo from "../components/Logo"
 
 const Home = () => {
     const { data, loading, error } = useAllPokemosQuery()
@@ -23,8 +24,9 @@ const Home = () => {
     if(error) return <div>Error...</div>
     
     return (
-        <div className="w-full flex flex-col gap-8">
+        <div className="w-full flex flex-col gap-8 relative">
             <Header />
+            <Logo size={1} />
             <Searcher setSearch={setSearch} />
             <PokemonsList
                 pokemons={pokemonsList}

@@ -4,10 +4,11 @@ import PokemonDetailsCard from "../components/PokemonDetailsCard"
 import Searcher from "../components/Searcher"
 import { useEffect, useState } from "react"
 import PokemonsList from "../components/PokemonsList"
+import Loader from "../components/Loader"
 
 const PokemonDetailsPage = () => {
   const { id } = useParams()
-  const { data } = useGetPokemonQuery({ variables: { id: id || '' } })
+  const { data, loading, error } = useGetPokemonQuery({ variables: { id: id || '' } })
   const { data: allPokes } = useAllPokemosQuery()
   const [search, setSearch] = useState('')
   const [filterSearched, setFilterSearched] = useState(allPokes)
@@ -20,8 +21,12 @@ const PokemonDetailsPage = () => {
     setFilterSearched({ pokemons: filtered })
   }, [search, allPokes])
 
+  if (data?.pokemon === null || data?.pokemon === undefined) 
+    return <Loader />
 
-  if (data?.pokemon === null || data?.pokemon === undefined) return null
+  if (loading) return <div>Loading...</div>
+
+  if (error) return <div>Error...</div>
   return (
     <div className="flex flex-col gap-8">
       <div className="w-full flex justify-start">
