@@ -1,10 +1,3 @@
-export interface SinglePokemon {
-    name: string;
-    number: string;
-    types: string[];
-    image: string;
-    __typename: string;
-}
 
 
 export interface Weight {
@@ -17,12 +10,11 @@ export interface Height {
     maximum: string;
 }
 
-export interface PokemonDetails {
-    name: string;
-    number: string;
-    types: string[];
-    height: Height;
-    weight: Weight;
-    weaknesses: string[];
+export interface Fast {
+    name: string | undefined;
+    damage: string | undefined;
 }
 
+export interface Attacks {
+    fast: Fast[];
+}
