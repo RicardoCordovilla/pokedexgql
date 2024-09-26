@@ -1,0 +1,8 @@
+query AllPokemos{
+  pokemons(first:100000){
+    name
+    number
+    types
+    image
+  }
+}
