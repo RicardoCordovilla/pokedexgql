@@ -48,3 +48,40 @@ export default tseslint.config({
   },
 })
 ```
+# Screens
+
+![image](https://github.com/user-attachments/assets/cd854102-611d-4c56-96c7-9a7e076241dc)
+![image](https://github.com/user-attachments/assets/194196bd-1463-4aa2-8fe1-3c575ed06566)
+
+
+# Pokedex GraphQL
+
+This project is a modern Pokedex application built using **React**, **TypeScript**, and **GraphQL** with Vite as the build tool. It allows users to browse and search Pokémon data efficiently by leveraging GraphQL's query capabilities.
+
+## Description
+
+The app utilizes **GraphQL Code Generator** to streamline type-safety and query generation. By automatically generating TypeScript types and hooks from GraphQL schemas, it ensures strong type checking and a smoother developer experience.
+
+## Features
+- **React + TypeScript**: Modern stack for building a type-safe and scalable frontend.
+- **GraphQL Integration**: Efficient data retrieval with GraphQL queries and mutations.
+- **Codegen for Type Safety**: Uses `@graphql-codegen` to generate TypeScript types and custom hooks.
+- **Vite for Build**: Vite is used for fast bundling and optimized builds.
+
+## Getting Started
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/RicardoCordovilla/pokedexgql.git
+
+2. Install dependencies:
+   ```bash
+   npm install
+   
+3. Run the app:
+   ```bash
+   npm run dev
+
+## Link to view in live this great work
+https://pokedexgql-codegen.netlify.app/
+  
+
